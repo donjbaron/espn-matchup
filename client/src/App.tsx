@@ -507,7 +507,7 @@ function SimulateView({ data }: { data: SimResult }) {
             <Tooltip
               contentStyle={{ background: '#111827', border: '1px solid #374151', borderRadius: 8 }}
               labelStyle={{ color: '#9ca3af', fontSize: 11 }}
-              formatter={(v: number) => [`${v} sims`, 'Count']}
+              formatter={(v) => [`${v} sims`, 'Count']}
             />
             <ReferenceLine x="0" stroke="#4b5563" strokeWidth={2} />
             <Bar dataKey="count" radius={[2, 2, 0, 0]}>
