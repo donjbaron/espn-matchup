@@ -114,6 +114,7 @@ interface VsAvgPlayer {
   name: string
   playerId: number
   proTeam: string
+  position?: string
   seasonAvg: number
   games: VsAvgGame[]
   expectedTotal: number
@@ -671,7 +672,7 @@ function OutcomeDistribution({ histogram, delta }: { histogram: SimResult['histo
         <Tooltip
           contentStyle={{ background: '#111827', border: '1px solid #374151', borderRadius: 8 }}
           labelStyle={{ color: '#9ca3af', fontSize: 10 }}
-          formatter={(v: number) => [`${v} sims`, '']}
+          formatter={(v) => [`${v} sims`, '']}
         />
         <ReferenceLine x={chartData.find(b => parseInt(b.range) >= 0)?.range ?? '0'} stroke="#6b7280" strokeWidth={1} strokeDasharray="3 3" />
         <Bar dataKey="count" radius={[2, 2, 0, 0]}>
