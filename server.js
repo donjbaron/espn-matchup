@@ -1154,7 +1154,7 @@ app.get('/api/vs-avg', async (req, res) => {
 // Serve built frontend in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/dist')))
-  app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client/dist/index.html')))
+  app.get('/{*path}', (req, res) => res.sendFile(path.join(__dirname, 'client/dist/index.html')))
 }
 
 const PORT = process.env.PORT || 3001
