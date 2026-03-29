@@ -703,9 +703,10 @@ function FreeAgentsView({ data, sim, selectedDrops, selectedAdds, onToggleDrop, 
   onToggleDrop: (id: number) => void
   onToggleAdd: (id: number) => void
 }) {
-  const allPlayers = [...data.dropCandidates, ...data.players]
+  const displayFAs = data.players.slice(0, 50)
+  const allPlayers = [...data.dropCandidates, ...displayFAs]
   const maxTotal = Math.max(...allPlayers.map(p => p.projectedTotal), 1)
-  const rows = Math.max(data.dropCandidates.length, data.players.length)
+  const rows = Math.max(data.dropCandidates.length, displayFAs.length)
 
   const delta = [...selectedAdds].reduce((s, id) => {
     const p = data.players.find(p => p.playerId === id)
@@ -765,10 +766,10 @@ function FreeAgentsView({ data, sim, selectedDrops, selectedAdds, onToggleDrop, 
                 : <div />}
             </div>
             <div key={`add-${i}`}>
-              {data.players[i]
-                ? <CompactPlayerRow p={data.players[i]} maxTotal={maxTotal} scheduleAdjusted={data.scheduleAdjusted}
-                    selected={selectedAdds.has(data.players[i].playerId)}
-                    onToggle={() => onToggleAdd(data.players[i].playerId)} />
+              {displayFAs[i]
+                ? <CompactPlayerRow p={displayFAs[i]} maxTotal={maxTotal} scheduleAdjusted={data.scheduleAdjusted}
+                    selected={selectedAdds.has(displayFAs[i].playerId)}
+                    onToggle={() => onToggleAdd(displayFAs[i].playerId)} />
                 : <div />}
             </div>
           </>
@@ -796,7 +797,7 @@ function CompactPlayerRow({ p, maxTotal, scheduleAdjusted, selected = false, onT
         <img
           src={`https://a.espncdn.com/i/headshots/nba/players/full/${p.playerId}.png`}
           alt={p.name}
-          className="w-8 h-8 rounded-full object-cover bg-gray-800 shrink-0"
+          className="w-8 h-8 rounded-full object-cover bg-gray-800 shrink-0 hidden sm:block"
           onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
         />
         <div className="flex-1 min-w-0">
@@ -930,9 +931,10 @@ function VsAvgView({ data, sim, selectedDrops, selectedAdds, onToggleDrop, onTog
   onToggleDrop: (id: number) => void
   onToggleAdd: (id: number) => void
 }) {
-  const allPlayers = [...data.myPlayers, ...data.faPlayers]
+  const displayFAs = data.faPlayers.slice(0, 50)
+  const allPlayers = [...data.myPlayers, ...displayFAs]
   const maxTotal = Math.max(...allPlayers.map(p => p.expectedTotal), 1)
-  const rows = Math.max(data.myPlayers.length, data.faPlayers.length)
+  const rows = Math.max(data.myPlayers.length, displayFAs.length)
 
   const delta = [...selectedAdds].reduce((s, id) => {
     const p = data.faPlayers.find(p => p.playerId === id)
@@ -985,10 +987,10 @@ function VsAvgView({ data, sim, selectedDrops, selectedAdds, onToggleDrop, onTog
               )}
             </div>
             <div key={`add-${i}`}>
-              {data.faPlayers[i] && (
-                <VsAvgPlayerRow p={data.faPlayers[i]} maxTotal={maxTotal}
-                  selected={selectedAdds.has(data.faPlayers[i].playerId)}
-                  onToggle={() => onToggleAdd(data.faPlayers[i].playerId)} />
+              {displayFAs[i] && (
+                <VsAvgPlayerRow p={displayFAs[i]} maxTotal={maxTotal}
+                  selected={selectedAdds.has(displayFAs[i].playerId)}
+                  onToggle={() => onToggleAdd(displayFAs[i].playerId)} />
               )}
             </div>
           </>
