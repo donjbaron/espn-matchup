@@ -259,6 +259,16 @@ export default function App() {
     {playerModal && <PlayerStatsModal playerId={playerModal.playerId} name={playerModal.name} x={playerModal.x} y={playerModal.y} onClose={() => setPlayerModal(null)} />}
     <div className="min-h-screen bg-gray-950 text-white p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-8 h-8 shrink-0">
+            <circle cx="50" cy="50" r="48" fill="#C8102E" stroke="#17408B" strokeWidth="4"/>
+            <path d="M2 50 Q26 38 50 50 Q74 62 98 50" fill="none" stroke="#17408B" strokeWidth="3"/>
+            <path d="M2 50 Q26 62 50 50 Q74 38 98 50" fill="none" stroke="#17408B" strokeWidth="3"/>
+            <path d="M50 2 Q38 26 50 50 Q62 74 50 98" fill="none" stroke="#17408B" strokeWidth="3"/>
+            <path d="M50 2 Q62 26 50 50 Q38 74 50 98" fill="none" stroke="#17408B" strokeWidth="3"/>
+          </svg>
+          <h1 className="text-2xl font-bold tracking-widest uppercase text-white">Jake Fantasy</h1>
+        </div>
         <div className="flex flex-wrap gap-1 mb-6 bg-gray-900 rounded-xl p-1 w-fit mx-auto">
           {tabs.map(t => (
             <button
