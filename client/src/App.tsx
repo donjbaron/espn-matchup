@@ -800,12 +800,12 @@ function CompactPlayerRow({ p, maxTotal, scheduleAdjusted, selected = false, onT
           onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
         />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1 mb-1">
-            <span className="text-xs font-semibold text-white truncate">{p.name}</span>
-            {p.position && <span className="text-xs text-gray-500 shrink-0 bg-gray-700 px-1 rounded">{p.position}</span>}
+          <span className="text-xs font-semibold text-white truncate block">{p.name}</span>
+          <div className="flex items-center gap-1">
+            {p.position && <span className="text-xs text-gray-500 bg-gray-700 px-1 rounded shrink-0">{p.position}</span>}
             <span className="text-xs text-gray-600 shrink-0">{p.proTeam}</span>
           </div>
-          <div className="w-full bg-gray-800 rounded-full h-1">
+          <div className="w-full bg-gray-800 rounded-full h-1 mt-1">
             <div className="bg-blue-500 h-1 rounded-full" style={{ width: `${(p.projectedTotal / maxTotal) * 100}%` }} />
           </div>
         </div>
@@ -891,12 +891,12 @@ function VsAvgPlayerRow({ p, maxTotal, selected, onToggle }: {
           onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
         />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1 mb-1">
-            <span className="text-xs font-semibold text-white truncate">{p.name}</span>
-            {p.position && <span className="text-xs text-gray-500 shrink-0 bg-gray-700 px-1 rounded">{p.position}</span>}
+          <span className="text-xs font-semibold text-white truncate block">{p.name}</span>
+          <div className="flex items-center gap-1">
+            {p.position && <span className="text-xs text-gray-500 bg-gray-700 px-1 rounded shrink-0">{p.position}</span>}
             <span className="text-xs text-gray-600 shrink-0">{p.proTeam}</span>
           </div>
-          <div className="w-full bg-gray-800 rounded-full h-1">
+          <div className="w-full bg-gray-800 rounded-full h-1 mt-1">
             <div className="bg-blue-500 h-1 rounded-full" style={{ width: `${(p.expectedTotal / maxTotal) * 100}%` }} />
           </div>
           {/* Game chips */}
